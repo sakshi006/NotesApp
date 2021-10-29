@@ -15,30 +15,37 @@ function addNote() {
     }
 
     let text = textArea.value;
-    notesObj.push(text);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    textArea.value = ""
+    console.log(text)
+    if (text !== "") {
+        notesObj.push(text);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        textArea.value = ""
+
+    }
+    else {
+          textArea.innerText= "Please Enter Something !!"
+    }
 
     showNotes();
 }
 
 // deleting a note
 
-function deleteNote(index){
+function deleteNote(index) {
     console.log(index);
     let notes = localStorage.getItem("notes");
-      if (notes == null) {
-          notesObj = []
-      }
-      else {
-          notesObj = JSON.parse(notes);
-      }
-  
-      notesObj.splice(index,1);
-      localStorage.setItem("notes",JSON.stringify(notesObj))
-      showNotes();
-  }
-  
+    if (notes == null) {
+        notesObj = []
+    }
+    else {
+        notesObj = JSON.parse(notes);
+    }
+
+    notesObj.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesObj))
+    showNotes();
+}
+
 
 
 //  showing notes
@@ -68,26 +75,26 @@ function showNotes() {
     if (notesObj.length != 0)
         notesELement.innerHTML = html;
     else
-     notesELement.innerHTML=`Nothing to show! Use "Add note" section to add some notes!!`
+        notesELement.innerHTML = `Nothing to show! Use "Add note" section to add some notes!!`
 }
 
-function searchItems(e){
-  let inputVal = (e.target.value.toLowerCase());
-  let noteCards = document.getElementsByClassName("noteCard");
-  Array.from(noteCards).forEach((element)=>{
-      let cardTxt = element.getElementsByTagName("p")[0].innerText
-      if(cardTxt.includes(inputVal))
-        element.style.display = "block"
-    else
-        element.style.display = "none"
-    //   console.log(cardTxt)
-  })
+function searchItems(e) {
+    let inputVal = (e.target.value.toLowerCase());
+    let noteCards = document.getElementsByClassName("noteCard");
+    Array.from(noteCards).forEach((element) => {
+        let cardTxt = element.getElementsByTagName("p")[0].innerText
+        if (cardTxt.includes(inputVal))
+            element.style.display = "block"
+        else
+            element.style.display = "none"
+        //   console.log(cardTxt)
+    })
 }
 
 
 // event listeners
 
-searchTxt.addEventListener("input",(e)=>searchItems(e));
+searchTxt.addEventListener("input", (e) => searchItems(e));
 addButton.addEventListener("click", () => addNote())
 
 
