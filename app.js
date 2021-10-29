@@ -6,6 +6,9 @@ showNotes()
 // adding notes
 function addNote() {
 
+    let noteDate = new Date();
+    console.log(noteDate)
+
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = []
@@ -15,7 +18,7 @@ function addNote() {
     }
 
     let text = textArea.value;
-    console.log(text)
+    // console.log(text)
     if (text !== "") {
         notesObj.push(text);
         localStorage.setItem("notes", JSON.stringify(notesObj));
@@ -66,6 +69,8 @@ function showNotes() {
           <h5 class="card-title">Note ${index + 1}</h5>
           <p class="card-text">${element}</p>
           <button id="${index}" onclick="deleteNote(this.id)" class="btn btn-outline-danger">Delete Note</button>
+          <hr>
+          <div id="date">${new Date()}</div>
         </div>
       </div>`
     });

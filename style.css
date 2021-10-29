@@ -21,3 +21,8 @@ h2{
   padding: 10px;
   box-shadow: 5px 10px 18px #888888;
 }
+
+#date{
+    padding: 0.5rem;
+    font-size: 0.5rem;
+}
