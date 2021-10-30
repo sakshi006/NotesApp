@@ -1,4 +1,5 @@
 const textArea = document.querySelector("#add-text");
+const noteTitle = document.querySelector("#add-title");
 const addButton = document.querySelector("#add-btn");
 const searchTxt = document.querySelector("#search-txt")
 showNotes()
@@ -7,7 +8,7 @@ showNotes()
 function addNote() {
 
     let noteDate = new Date();
-    console.log(noteDate)
+    // console.log(noteDate)
 
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -18,16 +19,17 @@ function addNote() {
     }
 
     let text = textArea.value;
-    // console.log(text)
-    if (text !== "") {
-        notesObj.push(text);
-        localStorage.setItem("notes", JSON.stringify(notesObj));
-        textArea.value = ""
+    let title = noteTitle.value;
 
+    myNotesObj = {
+        title: title,
+        text: text,
     }
-    else {
-          textArea.innerText= "Please Enter Something !!"
-    }
+    // console.log(text)
+    notesObj.push(myNotesObj);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    textArea.value = ""
+    noteTitle.value = ""
 
     showNotes();
 }
@@ -66,8 +68,8 @@ function showNotes() {
     notesObj.forEach((element, index) => {
         html += `<div class="noteCard my-2 mx-2 card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">Note ${index + 1}</h5>
-          <p class="card-text">${element}</p>
+          <h5 class="card-title">Note ${index+1 +" : "+element.title}</h5>
+          <p class="card-text">${element.text}</p>
           <button id="${index}" onclick="deleteNote(this.id)" class="btn btn-outline-danger">Delete Note</button>
           <hr>
           <div id="date">${new Date()}</div>

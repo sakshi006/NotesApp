@@ -3,8 +3,10 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+   
     text-align: center;
 }
+
 
 .noteCard .card-title{
     font-weight: bold;
@@ -23,6 +25,8 @@ h2{
 }
 
 #date{
+    position: absolute;
+    bottom: 0;
     padding: 0.5rem;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
 }

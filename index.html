@@ -56,16 +56,22 @@
       <h2>Welcome to NotesAPP</h2>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Add a Note</h5>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+            <input id="add-title" type="text" placeholder="Enter Note Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          
+          <h5 class="card-title" style="text-align: left;">Add a Note</h5>
           <div class="mb-3">
             <textarea
+              placeholder="Enter Note"
               id="add-text"
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
             ></textarea>
           </div>
-          <button class="btn btn-outline-success" id="add-btn">Add Note</button>
+          <button class="btn btn-outline-success"  id="add-btn">Add Note</button>
         </div>
       </div>
       <h2>Your Notes</h2>
